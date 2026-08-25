@@ -6,16 +6,20 @@
 
 <title>Матвей — 20 ♡</title>
 
-<!-- Шрифты -->
+<!-- =====================================================
+     ШРИФТЫ
+===================================================== -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
 
+
 <style>
 
 /* =====================================================
-   ОСНОВНЫЕ НАСТРОЙКИ
+   ОСНОВА
 ===================================================== */
 
 * {
@@ -29,7 +33,7 @@ html {
 }
 
 body {
-    background: #fbf6f3;
+    background: #fbf7f5;
     color: #4b4140;
     font-family: "Manrope", sans-serif;
     overflow-x: hidden;
@@ -44,58 +48,35 @@ button {
     border: none;
 }
 
+a {
+    text-decoration: none;
+}
+
 section {
     position: relative;
-    padding: 120px 7%;
-}
-
-.serif {
-    font-family: "Cormorant Garamond", serif;
+    padding: 110px 7%;
+    overflow: hidden;
 }
 
 
 /* =====================================================
-   КУРСОР
-===================================================== */
-
-.cursor-heart {
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-
-    font-size: 16px;
-
-    animation: cursorHeart 1.5s ease-out forwards;
-}
-
-@keyframes cursorHeart {
-
-    0% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateY(-70px) scale(1.5);
-    }
-}
-
-
-/* =====================================================
-   ОБЩИЕ ЗАГОЛОВКИ
+   ОБЩИЕ ЭЛЕМЕНТЫ
 ===================================================== */
 
 .section-label {
     text-align: center;
 
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 3px;
+
     text-transform: uppercase;
 
-    color: #b18f8b;
+    color: #b18e89;
 
     margin-bottom: 15px;
+
+    position: relative;
+    z-index: 3;
 }
 
 .section-title {
@@ -112,12 +93,15 @@ section {
     color: #403737;
 
     margin-bottom: 25px;
+
+    position: relative;
+    z-index: 3;
 }
 
 .section-description {
     max-width: 620px;
 
-    margin: 0 auto 65px;
+    margin: 0 auto 60px;
 
     text-align: center;
 
@@ -126,11 +110,14 @@ section {
     line-height: 1.9;
 
     color: #887976;
+
+    position: relative;
+    z-index: 3;
 }
 
 
 /* =====================================================
-   КНОПКИ
+   КНОПКА
 ===================================================== */
 
 .main-button {
@@ -142,7 +129,7 @@ section {
 
     gap: 8px;
 
-    padding: 15px 27px;
+    padding: 15px 28px;
 
     border-radius: 100px;
 
@@ -159,7 +146,10 @@ section {
     transition: .3s;
 
     box-shadow:
-        0 12px 30px rgba(155, 105, 98, .18);
+        0 12px 30px rgba(155,105,98,.18);
+
+    position: relative;
+    z-index: 5;
 }
 
 .main-button:hover {
@@ -167,7 +157,119 @@ section {
     transform: translateY(-4px);
 
     box-shadow:
-        0 18px 35px rgba(155, 105, 98, .25);
+        0 18px 38px rgba(155,105,98,.25);
+}
+
+
+/* =====================================================
+   ПЛАВАЮЩИЕ СЕРДЕЧКИ
+===================================================== */
+
+.decor-heart {
+
+    position: absolute;
+
+    pointer-events: none;
+
+    z-index: 1;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    opacity: .35;
+
+    animation:
+        heartFloat
+        var(--duration)
+        ease-in-out
+        infinite;
+
+    animation-delay:
+        var(--delay);
+}
+
+.decor-heart.small {
+    font-size: 17px;
+}
+
+.decor-heart.medium {
+    font-size: 25px;
+}
+
+.decor-heart.large {
+    font-size: 36px;
+}
+
+.decor-heart.pink {
+    color: #d39d98;
+}
+
+.decor-heart.cream {
+    color: #d5bca9;
+}
+
+.decor-heart.lilac {
+    color: #b8a5c2;
+}
+
+@keyframes heartFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(-7deg);
+
+        opacity: .22;
+    }
+
+    50% {
+        transform:
+            translateY(-18px)
+            rotate(7deg);
+
+        opacity: .55;
+    }
+}
+
+
+/* =====================================================
+   СЕРДЕЧКИ ПРИ КЛИКЕ
+===================================================== */
+
+.click-heart {
+
+    position: fixed;
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    font-size: 18px;
+
+    animation:
+        clickHeartAnimation
+        1.5s
+        ease-out
+        forwards;
+}
+
+@keyframes clickHeartAnimation {
+
+    0% {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translateY(-80px)
+            scale(1.5);
+    }
 }
 
 
@@ -181,12 +283,10 @@ section {
 
     display: flex;
 
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     text-align: center;
-
-    overflow: hidden;
 
     background:
 
@@ -204,38 +304,41 @@ section {
 
         radial-gradient(
             circle at 50% 100%,
-            #f4e1ca 0,
+            #f3dfc8 0,
             transparent 30%
         ),
 
-        #fbf6f3;
+        #fbf7f5;
 }
 
 .hero-content {
+
     position: relative;
 
-    max-width: 950px;
+    z-index: 3;
 
-    z-index: 2;
+    max-width: 950px;
 }
 
 .hero-tag {
 
     display: inline-block;
 
-    padding: 9px 17px;
+    padding: 9px 18px;
 
     border-radius: 100px;
 
-    background: rgba(255,255,255,.65);
+    background:
+        rgba(255,255,255,.65);
 
-    backdrop-filter: blur(10px);
+    backdrop-filter:
+        blur(10px);
 
-    font-size: 11px;
+    color: #9c7b76;
+
+    font-size: 10px;
 
     letter-spacing: 2px;
-
-    color: #9c7c78;
 
     text-transform: uppercase;
 
@@ -244,9 +347,12 @@ section {
 
 .hero-number {
 
-    font-family: "Cormorant Garamond", serif;
+    font-family:
+        "Cormorant Garamond",
+        serif;
 
-    font-size: clamp(120px, 21vw, 230px);
+    font-size:
+        clamp(120px, 21vw, 230px);
 
     line-height: .7;
 
@@ -259,15 +365,18 @@ section {
 
 .hero-title {
 
-    font-family: "Cormorant Garamond", serif;
+    margin-top: 35px;
 
-    font-size: clamp(35px, 5vw, 62px);
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(35px, 5vw, 62px);
 
     font-weight: 400;
 
     color: #a87873;
-
-    margin-top: 35px;
 }
 
 .hero-text {
@@ -287,15 +396,16 @@ section {
 
     position: absolute;
 
-    bottom: 30px;
+    bottom: 28px;
 
     left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     color: #9e8884;
 
-    font-size: 10px;
+    font-size: 9px;
 
     letter-spacing: 3px;
 
@@ -319,7 +429,7 @@ section {
 
 
 /* =====================================================
-   ФОТОГАЛЕРЕЯ
+   ФОТОГРАФИИ
 ===================================================== */
 
 .photos-section {
@@ -340,9 +450,13 @@ section {
         .9fr
         1fr;
 
-    grid-auto-rows: 260px;
+    grid-auto-rows: 270px;
 
     gap: 18px;
+
+    position: relative;
+
+    z-index: 3;
 }
 
 .photo-card {
@@ -354,6 +468,10 @@ section {
     border-radius: 22px;
 
     background: #eadbd7;
+
+    box-shadow:
+        0 15px 35px
+        rgba(80,55,50,.06);
 }
 
 .photo-card:nth-child(1) {
@@ -371,12 +489,16 @@ section {
 
     object-fit: cover;
 
-    transition: transform .8s ease;
+    display: block;
+
+    transition:
+        transform .8s ease;
 }
 
 .photo-card:hover img {
 
-    transform: scale(1.06);
+    transform:
+        scale(1.06);
 }
 
 .photo-overlay {
@@ -402,20 +524,23 @@ section {
     transition: .4s;
 }
 
-.photo-card:hover .photo-overlay {
+.photo-card:hover
+.photo-overlay {
     opacity: 1;
 }
 
 .photo-overlay span {
 
-    font-family: "Caveat", cursive;
+    font-family:
+        "Caveat",
+        cursive;
 
     font-size: 25px;
 }
 
 
 /* =====================================================
-   ПИСЬМО
+   ПИСЬМО И КОНВЕРТ
 ===================================================== */
 
 .letter-section {
@@ -429,8 +554,6 @@ section {
     justify-content: center;
 
     align-items: center;
-
-    overflow: hidden;
 
     background:
 
@@ -450,18 +573,20 @@ section {
 }
 
 
-/* Контейнер конверта */
+/* контейнер */
 
 .envelope-wrapper {
 
-    width: 450px;
-    height: 350px;
+    width: 480px;
+
+    height: 370px;
 
     position: relative;
 
     display: flex;
 
     justify-content: center;
+
     align-items: center;
 
     cursor: pointer;
@@ -472,7 +597,7 @@ section {
 }
 
 
-/* Конверт */
+/* конверт */
 
 .envelope {
 
@@ -481,7 +606,8 @@ section {
 
     position: relative;
 
-    transform-style: preserve-3d;
+    transform-style:
+        preserve-3d;
 
     transition:
         transform .7s ease,
@@ -503,7 +629,7 @@ section {
 
     inset: 0;
 
-    background: #d6aaa4;
+    background: #d5aaa4;
 
     border-radius: 5px;
 
@@ -511,14 +637,16 @@ section {
 }
 
 
-/* бумага */
+/* =====================================================
+   БОЛЬШОЕ ПИСЬМО
+===================================================== */
 
 .letter-paper {
 
     position: absolute;
 
-    width: 325px;
-    height: 410px;
+    width: 390px;
+    height: 500px;
 
     left: 50%;
 
@@ -528,27 +656,148 @@ section {
         translateX(-50%)
         translateY(0);
 
-    background: #fffdf8;
+    background: #fffdf9;
 
-    border-radius: 3px;
+    border-radius: 4px;
 
     z-index: 2;
 
     opacity: 0;
 
     transition:
-        transform 1.1s cubic-bezier(.2,.8,.2,1),
+        transform 1.1s
+        cubic-bezier(.2,.8,.2,1),
+
         opacity .6s ease;
 
     box-shadow:
-        0 15px 40px
+        0 18px 45px
         rgba(75,55,50,.16);
 
     overflow: hidden;
+
+    -webkit-font-smoothing:
+        antialiased;
+
+    text-rendering:
+        optimizeLegibility;
 }
 
 
-/* передняя часть конверта */
+/* содержимое */
+
+.letter-content {
+
+    padding: 42px 38px;
+
+    height: 100%;
+
+    overflow-y: auto;
+
+    opacity: 0;
+
+    -webkit-font-smoothing:
+        antialiased;
+
+    text-rendering:
+        optimizeLegibility;
+}
+
+
+/* дата */
+
+.letter-date {
+
+    font-family:
+        "Manrope",
+        sans-serif;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2.5px;
+
+    color: #b49a95;
+
+    margin-bottom: 18px;
+}
+
+
+/* Матвей */
+
+.letter-content h3 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 48px;
+
+    line-height: 1;
+
+    font-weight: 600;
+
+    color: #443936;
+
+    margin-bottom: 20px;
+
+    -webkit-font-smoothing:
+        antialiased;
+}
+
+
+/* основной текст */
+
+.letter-content p {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 21px;
+
+    line-height: 1.48;
+
+    font-weight: 500;
+
+    color: #625451;
+
+    margin-bottom: 17px;
+
+    letter-spacing: .1px;
+
+    -webkit-font-smoothing:
+        antialiased;
+
+    text-rendering:
+        optimizeLegibility;
+}
+
+
+/* подпись */
+
+.letter-signature {
+
+    margin-top: 28px;
+
+    text-align: right;
+
+    font-family:
+        "Caveat",
+        cursive;
+
+    font-size: 34px;
+
+    line-height: 1.15;
+
+    color: #986c67;
+}
+
+
+/* =====================================================
+   ПЕРЕДНЯЯ ЧАСТЬ КОНВЕРТА
+===================================================== */
 
 .envelope-front {
 
@@ -575,7 +824,9 @@ section {
 }
 
 
-/* клапан */
+/* =====================================================
+   КЛАПАН
+===================================================== */
 
 .envelope-flap {
 
@@ -596,18 +847,23 @@ section {
             50% 100%
         );
 
-    transform-origin: top center;
+    transform-origin:
+        top center;
 
     transition:
-        transform 1s cubic-bezier(.4,.1,.2,1);
+        transform 1s
+        cubic-bezier(.4,.1,.2,1);
 
     z-index: 7;
 
-    backface-visibility: hidden;
+    backface-visibility:
+        hidden;
 }
 
 
-/* надпись на конверте */
+/* =====================================================
+   НАДПИСЬ НА КОНВЕРТЕ
+===================================================== */
 
 .envelope-name {
 
@@ -621,7 +877,9 @@ section {
 
     z-index: 10;
 
-    font-family: "Caveat", cursive;
+    font-family:
+        "Caveat",
+        cursive;
 
     font-size: 31px;
 
@@ -633,7 +891,9 @@ section {
 }
 
 
-/* сердечко */
+/* =====================================================
+   СЕРДЕЧКО-ПЕЧАТЬ
+===================================================== */
 
 .envelope-seal {
 
@@ -671,87 +931,24 @@ section {
 }
 
 
-/* содержимое письма */
+/* =====================================================
+   ОТКРЫТИЕ КОНВЕРТА
+===================================================== */
 
-.letter-content {
-
-    padding: 34px 30px;
-
-    height: 100%;
-
-    overflow-y: auto;
-}
-
-.letter-date {
-
-    font-size: 9px;
-
-    text-transform: uppercase;
-
-    letter-spacing: 2px;
-
-    color: #b49a95;
-
-    margin-bottom: 15px;
-}
-
-.letter-content h3 {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size: 40px;
-
-    font-weight: 500;
-
-    color: #473c3a;
-
-    margin-bottom: 15px;
-}
-
-.letter-content p {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size: 18px;
-
-    line-height: 1.45;
-
-    color: #6d5d59;
-
-    margin-bottom: 13px;
-}
-
-.letter-signature {
-
-    margin-top: 22px;
-
-    text-align: right;
-
-    font-family: "Caveat", cursive;
-
-    font-size: 29px;
-
-    color: #9b6f6a;
-}
-
-
-/* открытие */
-
-.envelope-wrapper.open .envelope {
+.envelope-wrapper.open
+.envelope {
 
     margin-top: 190px;
 
-    transform: scale(.95);
+    transform:
+        scale(.95);
 }
 
 .envelope-wrapper.open
 .envelope-flap {
 
-    transform: rotateX(180deg);
+    transform:
+        rotateX(180deg);
 
     z-index: 2;
 }
@@ -763,7 +960,7 @@ section {
 
     transform:
         translateX(-50%)
-        translateY(-255px);
+        translateY(-290px);
 
     z-index: 4;
 }
@@ -784,16 +981,15 @@ section {
     opacity: 0;
 }
 
-.letter-content {
-
-    opacity: 0;
-}
-
 .envelope-wrapper.open
 .letter-content {
 
     animation:
-        letterAppear .8s ease .6s forwards;
+        letterAppear
+        .8s
+        ease
+        .55s
+        forwards;
 }
 
 @keyframes letterAppear {
@@ -816,7 +1012,7 @@ section {
 }
 
 
-/* hover */
+/* hover конверта */
 
 .envelope-wrapper:not(.open):hover
 .envelope {
@@ -850,6 +1046,10 @@ section {
     color: #a68c87;
 
     transition: .3s;
+
+    position: relative;
+
+    z-index: 5;
 }
 
 
@@ -871,9 +1071,13 @@ section {
     display: grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(4,1fr);
 
     gap: 16px;
+
+    position: relative;
+
+    z-index: 3;
 }
 
 .reason-card {
@@ -948,9 +1152,13 @@ section {
     display: grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3,1fr);
 
     gap: 20px;
+
+    position: relative;
+
+    z-index: 3;
 }
 
 .meme-card {
@@ -979,11 +1187,13 @@ section {
 
     width: 100%;
 
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1/1;
 
     object-fit: cover;
 
     border-radius: 12px;
+
+    display: block;
 }
 
 .meme-caption {
@@ -1028,6 +1238,10 @@ section {
     box-shadow:
         0 25px 70px
         rgba(90,65,60,.08);
+
+    position: relative;
+
+    z-index: 3;
 }
 
 .wish-icon {
@@ -1052,11 +1266,12 @@ section {
 
 #wishText {
 
-    min-height: 70px;
+    min-height: 75px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     margin-bottom: 25px;
@@ -1092,9 +1307,14 @@ section {
 
     padding: 55px 35px;
 
-    background: rgba(255,255,255,.7);
+    background:
+        rgba(255,255,255,.7);
 
     border-radius: 30px;
+
+    position: relative;
+
+    z-index: 3;
 }
 
 .quiz-question {
@@ -1112,7 +1332,8 @@ section {
 
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
     gap: 12px;
 }
@@ -1140,7 +1361,8 @@ section {
 
     color: white;
 
-    transform: translateY(-3px);
+    transform:
+        translateY(-3px);
 }
 
 .quiz-result {
@@ -1205,6 +1427,10 @@ section {
         blur(15px);
 
     border-radius: 35px;
+
+    position: relative;
+
+    z-index: 3;
 }
 
 .secret-icon {
@@ -1225,6 +1451,11 @@ section {
     font-weight: 500;
 
     margin-bottom: 15px;
+}
+
+.secret-card > p {
+
+    color: #827573;
 }
 
 .secret-text {
@@ -1249,7 +1480,9 @@ section {
     display: block;
 
     animation:
-        letterAppear .8s ease;
+        letterAppear
+        .8s
+        ease;
 }
 
 
@@ -1281,7 +1514,7 @@ section {
         serif;
 
     font-size:
-        clamp(90px, 15vw, 180px);
+        clamp(90px,15vw,180px);
 
     line-height: .75;
 
@@ -1297,7 +1530,7 @@ section {
         serif;
 
     font-size:
-        clamp(50px, 8vw, 100px);
+        clamp(50px,8vw,100px);
 
     font-weight: 400;
 
@@ -1330,6 +1563,31 @@ section {
 
 
 /* =====================================================
+   ПОЯВЛЕНИЕ ЭЛЕМЕНТОВ
+===================================================== */
+
+.reveal {
+
+    opacity: 0;
+
+    transform:
+        translateY(25px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =====================================================
    АДАПТИВ
 ===================================================== */
 
@@ -1349,25 +1607,23 @@ section {
     }
 
     .photo-card:nth-child(1) {
-
         grid-row: span 1;
     }
 
     .photo-card:nth-child(4) {
-
         grid-column: span 1;
     }
 
     .reasons-grid {
 
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
     }
 
     .meme-grid {
 
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
     }
 }
 
@@ -1380,44 +1636,52 @@ section {
 
     .photo-grid {
 
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
 
-        grid-auto-rows: 280px;
+        grid-auto-rows:
+            280px;
     }
 
     .photo-card:nth-child(1) {
-
         grid-row: span 1;
     }
 
     .photo-card:nth-child(4) {
-
         grid-column: span 1;
     }
 
     .reasons-grid {
 
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .meme-grid {
 
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .quiz-options {
 
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .envelope-wrapper {
 
-        transform: scale(.78);
+        transform:
+            scale(.76);
 
-        height: 320px;
+        height: 330px;
+
+        margin-left: -20px;
+        margin-right: -20px;
     }
 
-    .envelope-wrapper.open .envelope {
+    .envelope-wrapper.open
+    .envelope {
 
         margin-top: 150px;
     }
@@ -1427,7 +1691,30 @@ section {
 
         transform:
             translateX(-50%)
-            translateY(-235px);
+            translateY(-260px);
+    }
+
+    .letter-paper {
+
+        width: 350px;
+        height: 470px;
+    }
+
+    .letter-content {
+
+        padding: 35px 30px;
+    }
+
+    .letter-content h3 {
+
+        font-size: 42px;
+    }
+
+    .letter-content p {
+
+        font-size: 19px;
+
+        line-height: 1.5;
     }
 
     .section-description {
@@ -1444,7 +1731,7 @@ section {
 
 
 <!-- =====================================================
-     ГЛАВНЫЙ ЭКРАН
+     HERO
 ===================================================== -->
 
 <section class="hero">
@@ -1466,8 +1753,8 @@ section {
         <p class="hero-text">
             Кажется, ты официально достиг возраста,
             когда можно говорить «мне 20»,
-            но совершенно необязательно начинать
-            вести себя на все двадцать.
+            но совершенно необязательно
+            начинать вести себя на все двадцать.
         </p>
 
         <a
@@ -1487,7 +1774,7 @@ section {
 
 
 <!-- =====================================================
-     ФОТОГРАФИИ
+     ФОТО
 ===================================================== -->
 
 <section
@@ -1512,9 +1799,7 @@ section {
     <div class="photo-grid">
 
 
-        <!-- ФОТО 1 -->
-
-        <div class="photo-card">
+        <div class="photo-card reveal">
 
             <img
                 src="photo1.jpg"
@@ -1522,17 +1807,17 @@ section {
             >
 
             <div class="photo-overlay">
+
                 <span>
                     тот самый ♡
                 </span>
+
             </div>
 
         </div>
 
 
-        <!-- ФОТО 2 -->
-
-        <div class="photo-card">
+        <div class="photo-card reveal">
 
             <img
                 src="photo2.jpg"
@@ -1540,17 +1825,17 @@ section {
             >
 
             <div class="photo-overlay">
+
                 <span>
-                    handsome
+                    красивый
                 </span>
+
             </div>
 
         </div>
 
 
-        <!-- ФОТО 3 -->
-
-        <div class="photo-card">
+        <div class="photo-card reveal">
 
             <img
                 src="photo3.jpg"
@@ -1558,17 +1843,17 @@ section {
             >
 
             <div class="photo-overlay">
+
                 <span>
                     ну какой же ты
                 </span>
+
             </div>
 
         </div>
 
 
-        <!-- ФОТО 4 -->
-
-        <div class="photo-card">
+        <div class="photo-card reveal">
 
             <img
                 src="photo4.jpg"
@@ -1576,17 +1861,17 @@ section {
             >
 
             <div class="photo-overlay">
+
                 <span>
                     мы ♡
                 </span>
+
             </div>
 
         </div>
 
 
-        <!-- ФОТО 5 -->
-
-        <div class="photo-card">
+        <div class="photo-card reveal">
 
             <img
                 src="photo5.jpg"
@@ -1594,9 +1879,11 @@ section {
             >
 
             <div class="photo-overlay">
+
                 <span>
                     любимое
                 </span>
+
             </div>
 
         </div>
@@ -1607,7 +1894,7 @@ section {
 
 
 <!-- =====================================================
-     КОНВЕРТ С ПИСЬМОМ
+     ПИСЬМО
 ===================================================== -->
 
 <section class="letter-section">
@@ -1642,7 +1929,7 @@ section {
                 <div class="letter-content">
 
                     <div class="letter-date">
-                        25 августа 2026
+                        26 августа 2026
                     </div>
 
                     <h3>
@@ -1697,7 +1984,7 @@ section {
 
                     <div class="letter-signature">
                         С любовью,<br>
-                        твоя ♡
+                        твоя тупилька♡
                     </div>
 
                 </div>
@@ -1720,7 +2007,7 @@ section {
             <div class="envelope-flap"></div>
 
 
-            <!-- ИМЯ -->
+            <!-- НАДПИСЬ -->
 
             <div class="envelope-name">
                 Матвею ♡
@@ -1772,7 +2059,7 @@ section {
     <div class="reasons-grid">
 
 
-        <div class="reason-card">
+        <div class="reason-card reveal">
 
             <span class="reason-number">
                 01
@@ -1785,7 +2072,7 @@ section {
         </div>
 
 
-        <div class="reason-card">
+        <div class="reason-card reveal">
 
             <span class="reason-number">
                 02
@@ -1799,7 +2086,7 @@ section {
         </div>
 
 
-        <div class="reason-card">
+        <div class="reason-card reveal">
 
             <span class="reason-number">
                 03
@@ -1812,7 +2099,7 @@ section {
         </div>
 
 
-        <div class="reason-card">
+        <div class="reason-card reveal">
 
             <span class="reason-number">
                 04
@@ -1825,7 +2112,7 @@ section {
         </div>
 
 
-        <div class="reason-card">
+        <div class="reason-card reveal">
 
             <span class="reason-number">
                 05
@@ -1838,7 +2125,7 @@ section {
         </div>
 
 
-        <div class="reason-card">
+        <div class="reason-card reveal">
 
             <span class="reason-number">
                 06
@@ -1852,7 +2139,7 @@ section {
         </div>
 
 
-        <div class="reason-card">
+        <div class="reason-card reveal">
 
             <span class="reason-number">
                 07
@@ -1865,7 +2152,7 @@ section {
         </div>
 
 
-        <div class="reason-card">
+        <div class="reason-card reveal">
 
             <span class="reason-number">
                 08
@@ -1878,7 +2165,7 @@ section {
         </div>
 
 
-        <div class="reason-card">
+        <div class="reason-card reveal">
 
             <span class="reason-number">
                 09
@@ -1892,7 +2179,7 @@ section {
         </div>
 
 
-        <div class="reason-card">
+        <div class="reason-card reveal">
 
             <span class="reason-number">
                 10
@@ -1905,7 +2192,7 @@ section {
         </div>
 
 
-        <div class="reason-card">
+        <div class="reason-card reveal">
 
             <span class="reason-number">
                 11
@@ -1919,7 +2206,7 @@ section {
         </div>
 
 
-        <div class="reason-card">
+        <div class="reason-card reveal">
 
             <span class="reason-number">
                 12
@@ -1933,7 +2220,7 @@ section {
         </div>
 
 
-        <div class="reason-card">
+        <div class="reason-card reveal">
 
             <span class="reason-number">
                 13
@@ -1946,7 +2233,7 @@ section {
         </div>
 
 
-        <div class="reason-card">
+        <div class="reason-card reveal">
 
             <span class="reason-number">
                 14
@@ -1960,7 +2247,7 @@ section {
         </div>
 
 
-        <div class="reason-card">
+        <div class="reason-card reveal">
 
             <span class="reason-number">
                 15
@@ -1974,7 +2261,7 @@ section {
         </div>
 
 
-        <div class="reason-card">
+        <div class="reason-card reveal">
 
             <span class="reason-number">
                 16
@@ -1987,7 +2274,7 @@ section {
         </div>
 
 
-        <div class="reason-card">
+        <div class="reason-card reveal">
 
             <span class="reason-number">
                 17
@@ -2000,7 +2287,7 @@ section {
         </div>
 
 
-        <div class="reason-card">
+        <div class="reason-card reveal">
 
             <span class="reason-number">
                 18
@@ -2014,7 +2301,7 @@ section {
         </div>
 
 
-        <div class="reason-card">
+        <div class="reason-card reveal">
 
             <span class="reason-number">
                 19
@@ -2028,7 +2315,7 @@ section {
         </div>
 
 
-        <div class="reason-card">
+        <div class="reason-card reveal">
 
             <span class="reason-number">
                 20
@@ -2068,7 +2355,7 @@ section {
     <div class="meme-grid">
 
 
-        <div class="meme-card">
+        <div class="meme-card reveal">
 
             <img
                 src="meme1.jpg"
@@ -2082,7 +2369,7 @@ section {
         </div>
 
 
-        <div class="meme-card">
+        <div class="meme-card reveal">
 
             <img
                 src="meme2.jpg"
@@ -2096,7 +2383,7 @@ section {
         </div>
 
 
-        <div class="meme-card">
+        <div class="meme-card reveal">
 
             <img
                 src="meme3.jpg"
@@ -2110,7 +2397,7 @@ section {
         </div>
 
 
-        <div class="meme-card">
+        <div class="meme-card reveal">
 
             <img
                 src="meme4.jpg"
@@ -2124,7 +2411,7 @@ section {
         </div>
 
 
-        <div class="meme-card">
+        <div class="meme-card reveal">
 
             <img
                 src="meme5.jpg"
@@ -2138,7 +2425,7 @@ section {
         </div>
 
 
-        <div class="meme-card">
+        <div class="meme-card reveal">
 
             <img
                 src="meme6.jpg"
@@ -2157,7 +2444,7 @@ section {
 
 
 <!-- =====================================================
-     СЛУЧАЙНЫЕ ПОЖЕЛАНИЯ
+     ПОЖЕЛАНИЯ
 ===================================================== -->
 
 <section class="wishes-section">
@@ -2176,7 +2463,7 @@ section {
     </p>
 
 
-    <div class="wish-box">
+    <div class="wish-box reveal">
 
         <div class="wish-icon">
             ✨
@@ -2203,7 +2490,7 @@ section {
 
 
 <!-- =====================================================
-     МИНИ-ИГРА
+     ИГРА
 ===================================================== -->
 
 <section class="quiz-section">
@@ -2222,7 +2509,7 @@ section {
     </p>
 
 
-    <div class="quiz-box">
+    <div class="quiz-box reveal">
 
         <div class="quiz-question">
             Что я выберу для идеального вечера?
@@ -2319,7 +2606,7 @@ section {
 
             <strong>
                 ты молодец.
-                А теперь иди меня обнимать. ♡
+                Я тебя безумно сильно люблю, ты самый лучший. ♡
             </strong>
 
         </div>
@@ -2385,7 +2672,9 @@ function toggleEnvelope() {
 
     envelope.classList.toggle("open");
 
-    if (envelope.classList.contains("open")) {
+    if (
+        envelope.classList.contains("open")
+    ) {
 
         hint.textContent =
             "нажми ещё раз, чтобы закрыть";
@@ -2394,13 +2683,12 @@ function toggleEnvelope() {
 
         hint.textContent =
             "нажми, чтобы открыть";
-
     }
 }
 
 
 /* =====================================================
-   ПОЖЕЛАНИЯ
+   СЛУЧАЙНЫЕ ПОЖЕЛАНИЯ
 ===================================================== */
 
 const wishes = [
@@ -2444,13 +2732,16 @@ function newWish() {
         const randomWish =
             wishes[
                 Math.floor(
-                    Math.random() * wishes.length
+                    Math.random() *
+                    wishes.length
                 )
             ];
 
-        wish.textContent = randomWish;
+        wish.textContent =
+            randomWish;
 
-        wish.style.opacity = "1";
+        wish.style.opacity =
+            "1";
 
     }, 200);
 }
@@ -2463,7 +2754,9 @@ function newWish() {
 function quizAnswer(correct) {
 
     const result =
-        document.getElementById("quizResult");
+        document.getElementById(
+            "quizResult"
+        );
 
     if (correct) {
 
@@ -2474,7 +2767,6 @@ function quizAnswer(correct) {
 
         result.textContent =
             "Неправильно. Подумай ещё раз 😌";
-
     }
 }
 
@@ -2486,15 +2778,174 @@ function quizAnswer(correct) {
 function openSecret() {
 
     const secret =
-        document.getElementById("secretText");
+        document.getElementById(
+            "secretText"
+        );
 
-    secret.classList.toggle("show");
-
+    secret.classList.toggle(
+        "show"
+    );
 }
 
 
 /* =====================================================
-   СЕРДЕЧКИ ПРИ КЛИКЕ
+   ПЛАВАЮЩИЕ СЕРДЕЧКИ
+===================================================== */
+
+function createDecorativeHearts() {
+
+    const sections =
+        document.querySelectorAll(
+            ".hero, .photos-section, .letter-section, .reasons-section, .memes-section, .wishes-section, .quiz-section, .secret-section"
+        );
+
+
+    sections.forEach(
+        (section, sectionIndex) => {
+
+            /*
+                На первом экране больше сердечек,
+                на остальных меньше.
+            */
+
+            const numberOfHearts =
+                sectionIndex === 0
+                    ? 10
+                    : 5;
+
+
+            for (
+                let i = 0;
+                i < numberOfHearts;
+                i++
+            ) {
+
+                const heart =
+                    document.createElement(
+                        "span"
+                    );
+
+
+                heart.classList.add(
+                    "decor-heart"
+                );
+
+
+                /* размеры */
+
+                const sizes = [
+
+                    "small",
+                    "medium",
+                    "large"
+
+                ];
+
+
+                heart.classList.add(
+
+                    sizes[
+                        Math.floor(
+                            Math.random() *
+                            sizes.length
+                        )
+                    ]
+
+                );
+
+
+                /* цвета */
+
+                const colors = [
+
+                    "pink",
+                    "cream",
+                    "lilac"
+
+                ];
+
+
+                heart.classList.add(
+
+                    colors[
+                        Math.floor(
+                            Math.random() *
+                            colors.length
+                        )
+                    ]
+
+                );
+
+
+                /* символ */
+
+                heart.textContent =
+                    Math.random() > .35
+                        ? "♡"
+                        : "♥";
+
+
+                /* горизонтальная позиция */
+
+                heart.style.left =
+                    Math.random() *
+                    94 +
+                    "%";
+
+
+                /* вертикальная позиция */
+
+                heart.style.top =
+                    Math.random() *
+                    88 +
+                    "%";
+
+
+                /* скорость */
+
+                heart.style.setProperty(
+
+                    "--duration",
+
+                    (
+                        4 +
+                        Math.random() * 5
+                    ) + "s"
+
+                );
+
+
+                /* задержка */
+
+                heart.style.setProperty(
+
+                    "--delay",
+
+                    (
+                        Math.random() * 4
+                    ) + "s"
+
+                );
+
+
+                section.appendChild(
+                    heart
+                );
+
+            }
+
+        }
+    );
+}
+
+
+/* запускаем сердечки */
+
+createDecorativeHearts();
+
+
+/* =====================================================
+   СЕРДЕЧКИ ПРИ НАЖАТИИ
 ===================================================== */
 
 document.addEventListener(
@@ -2502,8 +2953,22 @@ document.addEventListener(
     function(event) {
 
         if (
-            event.target.tagName === "BUTTON" ||
-            event.target.closest(".envelope-wrapper")
+
+            event.target.tagName ===
+            "BUTTON"
+
+            ||
+
+            event.target.closest(
+                ".envelope-wrapper"
+            )
+
+            ||
+
+            event.target.closest(
+                ".photo-card"
+            )
+
         ) {
 
             for (
@@ -2513,43 +2978,58 @@ document.addEventListener(
             ) {
 
                 const heart =
-                    document.createElement("div");
+                    document.createElement(
+                        "div"
+                    );
+
 
                 heart.className =
-                    "cursor-heart";
+                    "click-heart";
+
 
                 const symbols = [
+
                     "♡",
                     "♥",
                     "✦",
                     "✧"
+
                 ];
+
 
                 heart.textContent =
                     symbols[
                         Math.floor(
-                            Math.random()
-                            * symbols.length
+                            Math.random() *
+                            symbols.length
                         )
                     ];
+
 
                 heart.style.left =
                     (
                         event.clientX
                         +
                         Math.random() * 60
-                        - 30
+                        -
+                        30
                     ) + "px";
+
 
                 heart.style.top =
                     (
                         event.clientY
                         +
                         Math.random() * 20
-                        - 10
+                        -
+                        10
                     ) + "px";
 
-                document.body.appendChild(heart);
+
+                document.body.appendChild(
+                    heart
+                );
+
 
                 setTimeout(
                     () => heart.remove(),
@@ -2565,107 +3045,51 @@ document.addEventListener(
 
 
 /* =====================================================
-   ПЛАВНОЕ ПОЯВЛЕНИЕ СЕКЦИЙ
+   ПОЯВЛЕНИЕ ЭЛЕМЕНТОВ ПРИ СКРОЛЛЕ
 ===================================================== */
 
 const observer =
     new IntersectionObserver(
+
         entries => {
 
-            entries.forEach(entry => {
+            entries.forEach(
+                entry => {
 
-                if (entry.isIntersecting) {
+                    if (
+                        entry.isIntersecting
+                    ) {
 
-                    entry.target.style.opacity = "1";
+                        entry.target.classList.add(
+                            "visible"
+                        );
 
-                    entry.target.style.transform =
-                        "translateY(0)";
+                    }
 
                 }
-
-            });
+            );
 
         },
+
         {
-            threshold: .1
+            threshold: .12
         }
+
     );
 
 
-document.querySelectorAll(
-    ".photo-card, .reason-card, .meme-card, .wish-box, .quiz-box"
-).forEach(element => {
+document
+    .querySelectorAll(".reveal")
+    .forEach(
+        element => {
 
-    element.style.opacity = "0";
-
-    element.style.transform =
-        "translateY(25px)";
-
-    element.style.transition =
-        "opacity .8s ease, transform .8s ease";
-
-    observer.observe(element);
-
-});
-
-
-/* =====================================================
-   ЗВУК КЛИКА
-===================================================== */
-
-let audioContext;
-
-function clickSound() {
-
-    try {
-
-        if (!audioContext) {
-
-            audioContext =
-                new (
-                    window.AudioContext ||
-                    window.webkitAudioContext
-                )();
+            observer.observe(
+                element
+            );
 
         }
+    );
 
-        const oscillator =
-            audioContext.createOscillator();
-
-        const gain =
-            audioContext.createGain();
-
-        oscillator.frequency.value =
-            600;
-
-        oscillator.type =
-            "sine";
-
-        gain.gain.setValueAtTime(
-            .03,
-            audioContext.currentTime
-        );
-
-        gain.gain.exponentialRampToValueAtTime(
-            .001,
-            audioContext.currentTime + .12
-        );
-
-        oscillator.connect(gain);
-
-        gain.connect(
-            audioContext.destination
-        );
-
-        oscillator.start();
-
-        oscillator.stop(
-            audioContext.currentTime + .12
-        );
-
-    } catch (error) {}
-
-}
 
 </script>
 
